@@ -7,8 +7,7 @@ WORKDIR /app
 FROM base AS builder
 # Copy only requirements.txt first for better caching
 COPY --link requirements.txt ./
-RUN --mount=type=cache,target=/root/.cache/pip \
-    python -m venv .venv && \
+RUN python -m venv .venv && \
     .venv/bin/pip install --upgrade pip && \
     .venv/bin/pip install -r requirements.txt
 
