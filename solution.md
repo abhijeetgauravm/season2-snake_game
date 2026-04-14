@@ -45,18 +45,24 @@ Send email notification
 🔹 Learnings
 
 Understanding of self-hosted runners
+
 Docker build and deployment process
+
 CI/CD pipeline creation using GitHub Actions
+
 Debugging real-world issues (BuildKit, ports, permissions)
+
 Importance of health checks and retries
 
-🔹 Challenges Faced                                                                                Challenge	Solution
+## 🔹 Challenges Faced
 
-Docker BuildKit error	                                                                            Removed BuildKit dependency
-Runner offline	                                                                                 Restarted runner / used service
-Port mapping confusion	                                                                           Fixed container port (80:80)
-Git push rejected	                                                                                  Used git pull --rebase
-Health check failure	                                                                                 Added retry logic
+| Challenge | Solution |
+|----------|----------|
+| Docker BuildKit error | Removed BuildKit dependency from Dockerfile |
+| Runner offline | Restarted runner and configured it as a service |
+| Port mapping confusion | Corrected container port mapping to `80:80` |
+| Git push rejected | Resolved using `git pull --rebase` |
+| Health check failure | Implemented retry logic with delay in workflow |                                    Added retry logic
 
 
 🔹 Screenshots
@@ -78,3 +84,15 @@ Health check failure	                                                           
 4️⃣ Github Self Hosted Runner
 
 <img width="1862" height="878" alt="image" src="https://github.com/user-attachments/assets/27d4ef75-0570-4c4a-a815-94ae381cf214" />
+
+
+
+🎯 Bonus Tasks
+
+🔹 Auto-scale Self-Hosted Runners
+
+Multiple EC2 instances can be launched using Auto Scaling Groups. Each instance can register itself as a self-hosted runner using a startup script, enabling horizontal scaling of CI/CD workloads.
+
+🔹 Load Balancing using Nginx
+
+Nginx can be configured as a reverse proxy to distribute incoming traffic across multiple Docker containers running the Snake game. This improves availability and scalability.
