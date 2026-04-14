@@ -1,50 +1,98 @@
-# Web-based Snake Game
+🔹 Project Title
 
-A classic Snake game implemented with Python Flask for the backend and JavaScript for the game logic.
+CI/CD Pipeline for Snake Game using GitHub Actions & Self-Hosted Runner
 
-## Features
+🔹 Steps Taken
 
-- Classic snake gameplay
-- Score tracking with high score saved in local storage
-- Responsive design
-- Pause/Resume functionality
-- Game speed increases as score grows
+1. EC2 Setup
 
-## Installation
+Launched Ubuntu 22.04 EC2 instance
+Allowed ports:
+22 (SSH)
+80 (HTTP)
 
-1. Clone this repository or download the files
-2. Install the required dependencies:
+2. Self-Hosted Runner Setup
 
-```bash
-pip install -r requirements.txt
-```
+Configured GitHub self-hosted runner on EC2
+Installed runner using:
+./config.sh
+./run.sh
+Created separate runner directory for Snake project
 
-## Running the Game
+3. Docker Setup
 
-1. Navigate to the project directory
-2. Run the Flask application:
+Installed Docker on EC2:
+sudo apt update
+sudo apt install docker.io -y
 
-```bash
-python app.py
-```
+4. Application Deployment
 
-3. Open your web browser and go to `http://127.0.0.1:5000/`
+Cloned Snake game repository
+Built Docker image
+Ran container on port 80
 
-## How to Play
+5. CI/CD Pipeline
 
-- Use the arrow keys to control the snake
-- Eat the red food to grow longer and earn points
-- Avoid hitting the walls or yourself
-- The game gets faster as your score increases
-- Try to beat your high score!
+Created GitHub Actions workflow to:
 
-## Technologies Used
+Build Docker image
+Push image to Docker Hub
+Deploy container on EC2
+Perform health check
+Send email notification
 
-- Python Flask (backend)
-- HTML5 Canvas
-- JavaScript (game logic)
-- CSS3 (styling)
 
-## License
+🔹 Learnings
 
-This project is open source and available for personal and educational use.
+Understanding of self-hosted runners
+
+Docker build and deployment process
+
+CI/CD pipeline creation using GitHub Actions
+
+Debugging real-world issues (BuildKit, ports, permissions)
+
+Importance of health checks and retries
+
+## 🔹 Challenges Faced
+
+| Challenge | Solution |
+|----------|----------|
+| Docker BuildKit error | Removed BuildKit dependency from Dockerfile |
+| Runner offline | Restarted runner and configured it as a service |
+| Port mapping confusion | Corrected container port mapping to `80:80` |
+| Git push rejected | Resolved using `git pull --rebase` |
+| Health check failure | Implemented retry logic with delay in workflow |                                    Added retry logic
+
+
+🔹 Screenshots
+
+1️⃣ EC2 Instance Running
+
+<img width="1888" height="821" alt="image" src="https://github.com/user-attachments/assets/1168fed7-effa-49ae-941c-564aa2a2f62c" />
+
+2️⃣ GitHub Actions Logs
+
+<img width="1871" height="828" alt="image" src="https://github.com/user-attachments/assets/053a3310-2711-400a-85e6-eca1d206ac1b" />
+
+<img width="1876" height="838" alt="image" src="https://github.com/user-attachments/assets/3e82bd8b-a480-4269-8b9f-068319052b31" />
+
+3️⃣ Snake Game Running
+
+<img width="1884" height="952" alt="image" src="https://github.com/user-attachments/assets/f3cc7ab1-76ce-4086-8183-5a9b837da82e" />
+
+4️⃣ Github Self Hosted Runner
+
+<img width="1862" height="878" alt="image" src="https://github.com/user-attachments/assets/27d4ef75-0570-4c4a-a815-94ae381cf214" />
+
+
+
+🎯 Bonus Tasks
+
+🔹 Auto-scale Self-Hosted Runners
+
+Multiple EC2 instances can be launched using Auto Scaling Groups. Each instance can register itself as a self-hosted runner using a startup script, enabling horizontal scaling of CI/CD workloads.
+
+🔹 Load Balancing using Nginx
+
+Nginx can be configured as a reverse proxy to distribute incoming traffic across multiple Docker containers running the Snake game. This improves availability and scalability.
