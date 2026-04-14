@@ -42,17 +42,16 @@ Perform health check
 Send email notification
 
 
-🔹 Learnings
+## 🔹 Learnings
 
-Understanding of self-hosted runners
+Throughout this project, I gained hands-on experience in:
 
-Docker build and deployment process
+- Working with self-hosted runners and understanding their setup and lifecycle  
+- Building and deploying applications using Docker  
+- Designing and implementing CI/CD pipelines using GitHub Actions  
+- Troubleshooting real-world DevOps issues such as BuildKit errors, port mapping, and permission handling  
+- Implementing robust health checks with retry mechanisms to ensure application reliability  
 
-CI/CD pipeline creation using GitHub Actions
-
-Debugging real-world issues (BuildKit, ports, permissions)
-
-Importance of health checks and retries
 
 ## 🔹 Challenges Faced
 
@@ -84,6 +83,10 @@ Importance of health checks and retries
 4️⃣ Github Self Hosted Runner
 
 <img width="1862" height="878" alt="image" src="https://github.com/user-attachments/assets/27d4ef75-0570-4c4a-a815-94ae381cf214" />
+
+Email notification received after successful deployment
+
+<img width="1380" height="353" alt="Screenshot 2026-04-14 111155" src="https://github.com/user-attachments/assets/99aa4bbb-7a5a-4e97-b34b-4036ec078cc5" />
 
 
 
